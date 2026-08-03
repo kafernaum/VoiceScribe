@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VoiceScribe Lite</string>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="status_idle">Ready</string>
+    <string name="status_recording">Recording…</string>
+    <string name="status_playing">Playing…</string>
+    <string name="permission_needed">Microphone permission is required to record.</string>
+    <string name="no_recordings">No recordings yet -- tap Record to make your first one.</string>
+</resources>

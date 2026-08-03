@@ -157,6 +157,7 @@ before cutting your first real release, not during an incident.
 | `CONTRIBUTING.md` | Kotlin conventions, git flow, PR checklist/template |
 | `RELEASE_CHECKLIST.md` | Pre-release verification, rollout, monitoring, rollback |
 | `docs/adrs/` | Architecture Decision Records for every non-obvious trade-off |
+| `tools/lite-demo/` | A minimal, non-Gradle, framework-only recorder demo APK you can build with only `apt`-installed AOSP tools -- no Google Maven/Maven Central access needed. Not a substitute for the real app; see its README. |
 
 ## Contributing
 
