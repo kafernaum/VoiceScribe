@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VoiceScribe</string>
+    <string name="widget_label">VoiceScribe</string>
+    <string name="widget_tap_to_record">Touchez pour démarrer un enregistrement</string>
+    <string name="widget_last_recording_prefix">Dernier enregistrement :</string>
+    <string name="shortcut_new_recording_short">Nouvel enregistrement</string>
+    <string name="shortcut_new_recording_long">Démarrer un nouvel enregistrement</string>
+</resources>

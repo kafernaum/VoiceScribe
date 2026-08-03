@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VoiceScribe</string>
+    <string name="widget_label">VoiceScribe</string>
+    <string name="widget_tap_to_record">اضغط لبدء تسجيل جديد</string>
+    <string name="widget_last_recording_prefix">آخر تسجيل:</string>
+    <string name="shortcut_new_recording_short">تسجيل جديد</string>
+    <string name="shortcut_new_recording_long">بدء تسجيل جديد</string>
+</resources>

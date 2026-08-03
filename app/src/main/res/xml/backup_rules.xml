@@ -1,0 +1,11 @@
+<full-backup-content>
+    <!-- The Room database is encrypted at rest, but its file is still
+         excluded from Auto Backup: restoring a SQLCipher database onto a
+         different device (a different Keystore) would leave the app unable
+         to derive the same passphrase, since the passphrase itself lives in
+         EncryptedSharedPreferences (also excluded below). Audio recordings
+         are intentionally NOT backed up either — see PRIVACY_SECURITY.md. -->
+    <exclude domain="database" path="." />
+    <exclude domain="sharedpref" path="voicescribe_secure_prefs.xml" />
+    <exclude domain="file" path="recordings/" />
+</full-backup-content>

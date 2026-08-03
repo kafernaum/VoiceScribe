@@ -1,0 +1,5 @@
+<resources>
+    <string name="notification_channel_recording">Recording</string>
+    <string name="notification_recording_title">VoiceScribe is recording</string>
+    <string name="notification_recording_paused">Paused</string>
+</resources>

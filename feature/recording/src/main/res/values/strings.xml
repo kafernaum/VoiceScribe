@@ -1,0 +1,11 @@
+<resources>
+    <string name="tile_label">New recording</string>
+    <string name="recording_title_recording">Recording…</string>
+    <string name="recording_title_paused">Paused</string>
+    <string name="recording_title_preparing">Preparing…</string>
+    <string name="recording_action_start">Start recording</string>
+    <string name="recording_action_stop">Stop</string>
+    <string name="recording_action_pause">Pause</string>
+    <string name="recording_action_resume">Resume</string>
+    <string name="recording_action_bookmark">Add bookmark</string>
+</resources>

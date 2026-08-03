@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Owned here rather than in :app because this module is what actually
+         touches the microphone and runs the foreground service; AGP's
+         manifest merger folds this into the final app manifest. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application>
+        <service
+            android:name=".service.RecordingForegroundService"
+            android:foregroundServiceType="microphone"
+            android:exported="false" />
+    </application>
+
+</manifest>

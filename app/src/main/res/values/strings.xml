@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VoiceScribe</string>
+    <string name="widget_label">VoiceScribe</string>
+    <string name="widget_tap_to_record">Tap to start a new recording</string>
+    <string name="widget_last_recording_prefix">Last recording:</string>
+    <string name="shortcut_new_recording_short">New recording</string>
+    <string name="shortcut_new_recording_long">Start a new recording</string>
+</resources>

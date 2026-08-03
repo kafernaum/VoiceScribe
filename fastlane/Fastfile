@@ -1,0 +1,24 @@
+default_platform(:android)
+
+platform :android do
+  desc "Upload the release AAB to the Play Console internal testing track"
+  lane :deploy_internal do
+    upload_to_play_store(
+      track: "internal",
+      aab: "../app/build/outputs/bundle/release/app-release.aab",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+
+  desc "Promote the current internal-track build to production"
+  lane :promote_to_production do
+    upload_to_play_store(
+      track: "internal",
+      track_promote_to: "production",
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+    )
+  end
+end
