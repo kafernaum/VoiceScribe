@@ -1,0 +1,20 @@
+# Normalize text files to LF so shell scripts (gradlew) can't get silently
+# corrupted with CRLF line endings on a Windows checkout -- a CRLF'd gradlew
+# breaks when it later runs on a Linux CI runner. Binary files are marked
+# explicitly so git never attempts line-ending conversion on them, which
+# would corrupt the wrapper jar, keystores, and images.
+
+* text=auto eol=lf
+
+gradlew        text eol=lf
+*.sh           text eol=lf
+gradlew.bat    text eol=crlf
+
+*.jar          binary
+*.jks          binary
+*.keystore     binary
+*.png          binary
+*.jpg          binary
+*.jpeg         binary
+*.webp         binary
+*.zip          binary

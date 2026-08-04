@@ -58,7 +58,13 @@ jobs:
           if-no-files-found: ignore
 
   instrumented-tests:
-    runs-on: macos-14 # hardware-accelerated emulator support out of the box
+    # Not required for a debug APK -- that comes from build-lint-test above.
+    # This job runs the actual on-device/emulator Compose UI + Espresso
+    # suite, which is inherently the flakiest part of any Android CI setup
+    # (cold emulator boot on a shared runner). If it times out, re-running
+    # just this job is normal and doesn't mean anything is wrong with the
+    # app itself.
+    runs-on: macos-14 # Apple Silicon -- hardware-accelerated (HVF) emulator support out of the box
     steps:
       - uses: actions/checkout@v4
 
@@ -71,11 +77,40 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      # Caches the AVD + system image across runs so only the very first run
+      # pays for a cold emulator boot; every run after that restores a
+      # snapshot instead of creating+booting from scratch, which is the
+      # single biggest lever against "Timeout waiting for emulator to boot".
+      - name: AVD cache
+        uses: actions/cache@v4
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-34-google_apis-arm64-v8a-v1
+
+      - name: Create AVD snapshot (cache miss only)
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: arm64-v8a
+          force-avd-creation: false
+          emulator-boot-timeout: 900
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot-save
+          disable-animations: false
+          script: echo "AVD created."
+
       - name: Run instrumented tests (Compose UI, Espresso)
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
           target: google_apis
           arch: arm64-v8a
+          force-avd-creation: false
+          emulator-boot-timeout: 900
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: ./gradlew connectedDebugAndroidTest --stacktrace
